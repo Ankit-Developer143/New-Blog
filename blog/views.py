@@ -17,14 +17,18 @@ def home(request):
     categories = Category.objects.all()
     
     
+    Recentpost = Post.objects.all().order_by('-time_upload')
+     
+    
     posts =list( Post.objects.filter(publish = True))
     context = {
         'posts':posts,
-        'trends':trends[:5],
+        'trends':trends[:3],
         'author_post':AuthorsPost,
-        'cat':categories
+        'cats':categories,
+        'Recentpost':Recentpost[:3]
     }
-    return render(request,'blog/garden-category.html',context)
+    return render(request,'blog/garden-index.html',context)
 
 
 def categories(request):

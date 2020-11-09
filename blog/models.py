@@ -14,7 +14,7 @@ class Category(models.Model):
         return self.title
     
 class Post(models.Model):
-    title = models.CharField(max_length=30)
+    title = models.CharField(max_length=200)
     overview = models.TextField()
     time_upload = models.DateTimeField(auto_now_add=True)
     auther = models.ForeignKey(Author,on_delete=models.CASCADE)
