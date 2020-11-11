@@ -17,32 +17,7 @@
             </div>
         </div><!-- end top-search -->
 
-        <div class="topbar-section">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 col-sm-6 hidden-xs-down">
-                        <div class="topsocial">
-                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>
-                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Youtube"><i class="fa fa-youtube"></i></a>
-                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Pinterest"><i class="fa fa-pinterest"></i></a>
-                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i class="fa fa-twitter"></i></a>
-                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Flickr"><i class="fa fa-flickr"></i></a>
-                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Instagram"><i class="fa fa-instagram"></i></a>
-                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Google+"><i class="fa fa-google-plus"></i></a>
-                        </div><!-- end social -->
-                    </div><!-- end col -->
-
-                    <div class="col-lg-4 hidden-md-down">
-                    </div><!-- end col -->
-
-                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                        <div class="topsearch text-right">
-                            <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-search"></i> Search</a>
-                        </div><!-- end search -->
-                    </div><!-- end col -->
-                </div><!-- end row -->
-            </div><!-- end header-logo -->
-        </div><!-- end topbar -->
+    
 
         <div class="header-section">
             <div class="container">
@@ -56,7 +31,7 @@
             </div><!-- end header-logo -->
         </div><!-- end header -->
 
-        <header class="header">
+        <header class="header" style="margin-top: 100px;" >
             <div class="container">
                 <nav class="navbar navbar-inverse navbar-toggleable-md">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Forest Timemenu" aria-controls="Forest Timemenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,10 +40,10 @@
                     <div class="collapse navbar-collapse justify-content-md-center" id="Forest Timemenu"">
                         <ul class="navbar-nav" >
                             <li class="nav-item ">
-                                <a class="nav-link color-green-hover" style="color: black; href="garden-index.html">Home</a>
+                                <a class="nav-link color-green-hover" style="color: black; href="{% url 'home' %}">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link color-green-hover" style="color: black; href="garden-category.html">Gardening</a>
+                                <a class="nav-link color-green-hover" style="color: black; href="{% url 'categories' %}">Gardening</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link color-green-hover" style="color: black; href="garden-category.html">Outdoor Living</a>
@@ -90,7 +65,7 @@
 
         <div class="page-title wb">
             <div class="container">
-                <div class="row">
+                
                     <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                         <h2><i class="fa fa-leaf bg-green"></i> Category by: Trending Articles</h2>
                     </div><!-- end col -->
@@ -102,7 +77,7 @@
                         </ol>
                     </div><!-- end col -->                    
                 </div><!-- end row -->
-            </div><!-- end container -->
+          <!-- end container -->
  
         <section class="section wb">
             <div class="container">
@@ -132,18 +107,19 @@
                                         <div class="post-media">
                                             <a href="garden-single.html" title="">
                                                 <img src="{{post.thumbnail.url}}" alt="" class="img-fluid">
-                                                <div class="hovereffect"></div>
+                                                <div class=   
+                                                "hovereffect"></div>
                                             </a>
                                         </div><!-- end media -->
                                     </div><!-- end col -->
 
                                     <div class="blog-meta big-meta col-md-8">
-                                        <span class="bg-aqua"><a href="garden-category.html" title="">Indoor</a></span>
-                                        <h4><a href="garden-single.html" title="">{{post.title}}</a></h4>
+                                        <span class="bg-aqua"><a href="#" title="">Indoor</a></span>
+                                        <h4><a href="{% url 'post' post.id %}" title="">{{post.title}}</a></h4>
                                         <p>{{post.overview |truncatechars:'200'}}</p>
-                                        <small><a href="garden-category.html" title=""><i class="fa fa-eye"></i> {{post.read}}</a></small>
-                                        <small><a href="garden-single.html" title="">{{post.time_upload}}</a></small>
-                                        <small><a href="#" title="">by {{post.auther}}</a></small>
+                                        <small><a href="{% url 'post' post.id %}" title=""><i class="fa fa-eye"></i> {{post.read}}</a></small>
+                                        <small><a href="{% url 'post' post.id %}" title="">{{post.time_upload}}</a></small>
+                                        <small><a href="{% url 'post' post.id %}" title="">by {{post.auther}}</a></small>
                                     </div><!-- end meta -->
                                 </div><!-- end blog-box -->
                                 {% endfor  %}
@@ -178,7 +154,7 @@
 
                     <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
                         <div class="sidebar">
-                            <div class="widget">
+                            <!-- <div class="widget">
                                 <h2 class="widget-title">Search</h2>
                                 <form class="form-inline search-form">
                                     <div class="form-group">
@@ -186,18 +162,17 @@
                                     </div>
                                     <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
                                 </form>
-                            </div><!-- end widget -->
-
+                            </div> -->
                             <div class="widget">
                                 <h2 class="widget-title">Recent Posts</h2>
                                 <div class="blog-list-widget">
                                     {% for recent in Recentpost  %}
                                     <div class="list-group">
-                                        <a href="garden-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                                        <a href="" class="list-group-item list-group-item-action flex-column align-items-start">
                                             <div class="w-100 justify-content-between">
-                                                <img src="upload/garden_sq_09.jpg" alt="" class="img-fluid float-left">
+                                                <img src="{{recent.thumbnail.url}}" alt="" class="img-fluid float-left">
                                                 <h5 class="mb-1">{{recent.title}}</h5>
-                                                <small>12 Jan, 2016</small>
+                                                <small>{{recent.time_upload}}</small
                                             </div>
                                         </a>
                                     </div>
@@ -215,30 +190,23 @@
                             </div><!-- end widget -->
 
                             <div class="widget">
-                                <h2 class="widget-title">Instagram Feed</h2>
+                                <h2 class="widget-title">Top Rated Author </h2>
                                 <div class="instagram-wrapper clearfix">
-                                    <a href="#"><img src="upload/garden_sq_01.jpg" alt="" class="img-fluid"></a>
-                                    <a href="#"><img src="upload/garden_sq_02.jpg" alt="" class="img-fluid"></a>
-                                    <a href="#"><img src="upload/garden_sq_03.jpg" alt="" class="img-fluid"></a>
-                                    <a href="#"><img src="upload/garden_sq_04.jpg" alt="" class="img-fluid"></a>
-                                    <a href="#"><img src="upload/garden_sq_05.jpg" alt="" class="img-fluid"></a>
-                                    <a href="#"><img src="upload/garden_sq_06.jpg" alt="" class="img-fluid"></a>
-                                    <a href="#"><img src="upload/garden_sq_07.jpg" alt="" class="img-fluid"></a>
-                                    <a href="#"><img src="upload/garden_sq_08.jpg" alt="" class="img-fluid"></a>
-                                    <a href="#"><img src="upload/garden_sq_09.jpg" alt="" class="img-fluid"></a>
+                                    {% for author in author_post   %}
+                                     <a href="#"><img src="{{author.thumbnail.url}}" width="45%" style="border-radius: 20%;" alt="" class="img-fluid"></a>  
+                                    {% endfor   %}
                                 </div><!-- end Instagram wrapper -->
                             </div><!-- end widget -->
 
                             <div class="widget">
                                 <h2 class="widget-title">Popular Categories</h2>
                                 <div class="link-widget">
+                                    {% for cat in cats   %}
                                     <ul>
-                                        <li><a href="#">Gardening <span>(21)</span></a></li>
-                                        <li><a href="#">Outdoor Living <span>(15)</span></a></li>
-                                        <li><a href="#">Indoor Living <span>(31)</span></a></li>
-                                        <li><a href="#">Shopping Guides <span>(22)</span></a></li>
-                                        <li><a href="#">Pool Design <span>(66)</span></a></li>
+                                        <li><a href="#">{{cat.title}} <span>({{forloop.counter}})</span></a></li>
+                                       
                                     </ul>
+                                    {% endfor %}
                                 </div><!-- end link-widget -->
                             </div><!-- end widget -->
                         </div><!-- end sidebar -->
@@ -266,8 +234,9 @@
                                 <hr class="invis">
 
                                 <div class="newsletter-widget text-center">
-                                    <form class="form-inline">
-                                        <input type="text" class="form-control" placeholder="Enter your email address">
+                                    <form action="/" method="post">
+                                        {% csrf_token %}
+                                        <input type="text" name="email" class="form-control" placeholder="Enter your email address" required>
                                         <button type="submit" class="btn btn-primary">Subscribe <i class="fa fa-envelope-open-o"></i></button>
                                     </form>
                                 </div><!-- end newsletter -->
@@ -285,7 +254,7 @@
             </div><!-- end container -->
         </footer><!-- end footer -->
 
-        <div class="dmtop">Scroll to Top</div>
+        <div class="dmtop" id="Forest Timemenu">Scroll to Top</div>
         
     </div><!-- end wrapper -->
 

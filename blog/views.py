@@ -1,18 +1,25 @@
 from datetime import date
 from django.http.response import HttpResponse
 from django.shortcuts import get_object_or_404, render
-from .models import Post,Author,Category
+from .models import Post,Author,Category, subscribe
 import datetime
  
 
 # Create your views here.
 def home(request):
+    
+    if request.method == 'POST':
+        email = request.POST.get('name')
+        value = subscribe(email = email).save()
+        
+
+    
     # Trending Post
     week_ago = datetime.date.today() - datetime.timedelta(days= 7)
     trends = Post.objects.filter(time_upload__gte = week_ago).order_by('-read')
     
-    #Trending Author
-    TopAuthors  = Author.objects.order_by('-rate')      #this is loop and store data in author and save in Authos Post
+    #Trending Author #this is loop and store data in author and save in Authos Post
+    TopAuthors = Author.objects.order_by('-rate')[:4]
     AuthorsPost = [Post.objects.filter(auther = author).first() for author in TopAuthors  ] 
     categories = Category.objects.all()
     
@@ -24,7 +31,7 @@ def home(request):
     context = {
         'posts':posts,
         'trends':trends[:3],
-        'author_post':AuthorsPost,
+        'author_post':AuthorsPost[:4],
         'cats':categories,
         'Recentpost':Recentpost[:3]
     }
@@ -32,13 +39,21 @@ def home(request):
 
 
 def categories(request):
-    return HttpResponse('Hello')
-
-def poss(request):
-    return HttpResponse('Hello')
+    return render(request,'blog/garden-category.html')
 
 def post(request,post_ids):
-    post = get_object_or_404(Post,pk = post_ids)
-    print(post)
+    post_by_ids = get_object_or_404(Post,pk = post_ids) 
+    Recentpost = Post.objects.all().order_by('-time_upload')
+    TopAuthors = Author.objects.order_by('-rate')[:4]
+    AuthorsPost = [Post.objects.filter(auther = author).first() for author in TopAuthors  ] 
+    categories = Category.objects.all()
+    context= {
+        'posts':post_by_ids,
+        'Recentpost':Recentpost[:3],
+        'cats':categories,
+        'author_post':AuthorsPost
+        
+         
+    }
    
-    return HttpResponse('Hello')
+    return render(request,'blog/garden-single.html',context)
