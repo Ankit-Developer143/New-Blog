@@ -49,6 +49,26 @@ class Post(models.Model):
     def save(self,*args, **kwargs):
         self.slug = slugify(self.title)
         super(Post,self).save(*args,**kwargs)
+        
+        
+        
+class Comment(models.Model):
+    post = models.ForeignKey(Post,related_name="comments", on_delete=models.CASCADE)
+    name = models.CharField(max_length=50)
+    publish = models.DateTimeField(auto_now_add=True)
+    body = models.TextField()
+    status = models.BooleanField(default=True)
+    
+    
+    
+    class Meta:
+        ordering  = ("publish",)
+    def __str__(self):
+        return f"commented by {self.name}"
+    
+
+    
+    
     
     
     

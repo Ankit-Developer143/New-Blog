@@ -1,10 +1,12 @@
+from blog.forms import NewCommentForm
 from datetime import date
-from django.http.response import HttpResponse
-from django.shortcuts import get_object_or_404, render
-from .models import Post,Author,Category, subscribe
+from ckeditor import fields
+from django.http.response import HttpResponseRedirect
+from django.shortcuts import get_object_or_404, redirect, render
+from .models import Post,Author,Category,  subscribe,Comment
 import datetime
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
- 
+from django.views.generic.edit import CreateView 
 
 # Create your views here.
 def home(request):
@@ -64,13 +66,44 @@ def post(request,post_ids):
     #Using Read Count
     post_by_ids .read += 1
     post_by_ids.save()
+    
+
+    comments = post_by_ids.comments.filter(status = True) 
+    user_comment = None
+    if request.method == "POST":
+         comment_form = NewCommentForm(request.POST)
+         if comment_form.is_valid():
+             user_comment = comment_form.save(commit =False)
+             user_comment.post = post_by_ids
+             user_comment.save()
+             return redirect('post_ids.post')
+             
+    else:
+          comment_form = NewCommentForm()
+    
+   
     context= {
         'posts':post_by_ids,
         'Recentpost':Recentpost[:3],
         'cats':categories,
-        'author_post':AuthorsPost
-        
+        'author_post':AuthorsPost,
+        'post':post,'comments':user_comment,'comments':comments,'comment_form':comment_form
          
     }
    
     return render(request,'blog/garden-single.html',context)
+
+# def post(request,post_ids):
+#      post = get_object_or_404(Post,pk = post_ids)
+#      comments = post.comments.filter(status = True) 
+#      user_comment = None
+#      if request.method == "POST":
+#          comment_form = NewCommentForm(request.POST)
+#          if comment_form.is_valid():
+#              user_comment = comment_form.save(commit =False)
+#              user_comment.post = post
+#              user_comment.save()
+#              return render(request,'blog/garden-single.html')
+#      else:
+#           comment_form = NewCommentForm()
+#           return render(request,'blog/garden-single.html',{'post':post,'comments':user_comment,'comments':comments,'comment_form':comment_form})
