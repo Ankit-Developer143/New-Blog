@@ -1,11 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
+from django.utils.text import slugify
 # Create your models here.
 class subscribe(models.Model):
-    email = models.CharField(max_length=50,null=True)
+    email = models.EmailField(max_length=50,null=True)
     def __str__(self):
-        return f'{self.email }'
+        return f'{self.email}' 
     
 class  Author(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
@@ -22,6 +24,11 @@ class Category(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=200)
     overview = models.TextField()
+    #For Comment
+    slug = models.SlugField(null=True,blank=True)
+    body_text = RichTextUploadingField(null = True,blank=True)
+    #Endcomment
+    
     highlight_line = models.CharField(max_length=1000 ,blank = True)
     Highlight_explanation= models.TextField(null=True)
     Highlighttopic_img = models.ImageField(upload_to = 'Highlighttopic_img',blank = True)
@@ -39,6 +46,9 @@ class Post(models.Model):
     def __str__(self):
         return f'{self.title}'
     
+    def save(self,*args, **kwargs):
+        self.slug = slugify(self.title)
+        super(Post,self).save(*args,**kwargs)
     
     
     
