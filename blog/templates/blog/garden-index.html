@@ -5,80 +5,86 @@
 {% block css  %}
 
 {% endblock  %}
-    <div id="wrapper">
-        <div class="collapse top-search" id="collapseExample">
-            <div class="card card-block">
-                <div class="newsletter-widget text-center">
-                    <form class="form-inline">
-                        <input type="text" class="form-control" placeholder="What you are looking for?">
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
-                    </form>
-                </div><!-- end newsletter -->
-            </div>
-        </div><!-- end top-search -->
+<div id="wrapper">
+    <div class="collapse top-search" id="collapseExample">
+        <div class="card card-block">
+            <div class="newsletter-widget text-center">
+                <form class="form-inline">
+                    <input type="text" class="form-control" placeholder="What you are looking for?">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                </form>
+            </div><!-- end newsletter -->
+        </div>
+    </div><!-- end top-search -->
 
-    
 
-        <div class="header-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="logo">
-                            <a href="garden-index.html"><img src="{% static 'images/version/garden-logo.png' %}" alt=""></a>
-                        </div><!-- end logo -->
-                    </div>
-                </div><!-- end row -->
-            </div><!-- end header-logo -->
-        </div><!-- end header -->
 
-        <header class="header" style="margin-top: 100px;" >
-            <div class="container">
-                <nav class="navbar navbar-inverse navbar-toggleable-md">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Forest Timemenu" aria-controls="Forest Timemenu" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse justify-content-md-center" id="Forest Timemenu"">
-                        <ul class="navbar-nav" >
-                            <li class="nav-item ">
-                                <a class="nav-link color-green-hover" style="color: black; href="{% url 'home' %}">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link color-green-hover" style="color: black; href="{% url 'categories' %}">Gardening</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link color-green-hover" style="color: black; href="garden-category.html">Outdoor Living</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link color-green-hover" style="color: black;  href="garden-category.html">Indoor Living</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link color-green-hover" style="color: black; href="garden-category.html">Shopping Guides</a>
-                            </li>  
-                            <li class="nav-item">
-                                <a class="nav-link color-green-hover" style="color: black; href="garden-contact.html">Contact</a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            </div><!-- end container -->
-        </header><!-- end header -->
+    <div class="header-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="logo">
+                        <a href="garden-index.html"><img src="{% static 'images/version/garden-logo.png' %}" alt=""></a>
+                    </div><!-- end logo -->
+                </div>
+            </div><!-- end row -->
+        </div><!-- end header-logo -->
+    </div><!-- end header -->
 
-        <div class="page-title wb">
-            <div class="container">
-                
-                    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                        <h2><i class="fa fa-leaf bg-green"></i> Category by: Trending Articles</h2>
-                    </div><!-- end col -->
-                    <div class="col-lg-4 col-md-4 col-sm-12 hidden-xs-down hidden-sm-down">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item"><a href="#">Blog</a></li>
-                            <li class="breadcrumb-item active">Gardening</li>
-                        </ol>
-                    </div><!-- end col -->                    
-                </div><!-- end row -->
-          <!-- end container -->
- 
+    <header class="header" style="margin-top: 100px;">
+        <div class="container">
+            <nav class="navbar navbar-inverse navbar-toggleable-md">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Forest Timemenu"
+                    aria-controls="Forest Timemenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-md-center" id="Forest Timemenu"">
+                        <ul class=" navbar-nav">
+                    <li class="nav-item ">
+                        <a class="nav-link color-green-hover" style="color: black; href=" {% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link color-green-hover" style="color: black; href="
+                            {% url 'categories' %}">Gardening</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link color-green-hover" style="color: black; href=" garden-category.html">Outdoor
+                            Living</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link color-green-hover" style="color: black;  href=" garden-category.html">Indoor
+                            Living</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link color-green-hover" style="color: black; href=" garden-category.html">Shopping
+                            Guides</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link color-green-hover" style="color: black; href="
+                            garden-contact.html">Contact</a>
+                    </li>
+                    </ul>
+                </div>
+            </nav>
+        </div><!-- end container -->
+    </header><!-- end header -->
+
+    <div class="page-title wb">
+        <div class="container">
+
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <h2><i class="fa fa-leaf bg-green"></i> Category by: Trending Articles</h2>
+            </div><!-- end col -->
+            <div class="col-lg-4 col-md-4 col-sm-12 hidden-xs-down hidden-sm-down">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Blog</a></li>
+                    <li class="breadcrumb-item active">Gardening</li>
+                </ol>
+            </div><!-- end col -->
+        </div><!-- end row -->
+        <!-- end container -->
+
         <section class="section wb">
             <div class="container">
                 <div class="row">
@@ -86,13 +92,14 @@
                         <div class="page-wrapper">
                             <div class="blog-list clearfix">
                                 <div class="blog-box row">
-                                    
+
                                     {% for trend in trends  %}
                                     <div class="col-md-4">
                                         <div class="post-media">
                                             <a href="garden-single.html" title="">
                                                 <img src="{{trend.thumbnail.url}}" alt="" class="img-fluid">
-                                                <div class="bottom-left"> <b>Title</b>:{{trend.title | truncatechars:'100'}}</div>
+                                                <div class="bottom-left">
+                                                    <b>Title</b>:{{trend.title | truncatechars:'100'}}</div>
                                                 <div class="hovereffect"></div>
                                             </a>
                                         </div><!-- end media -->
@@ -107,8 +114,7 @@
                                         <div class="post-media">
                                             <a href="garden-single.html" title="">
                                                 <img src="{{post.thumbnail.url}}" alt="" class="img-fluid">
-                                                <div class=   
-                                                "hovereffect"></div>
+                                                <div class="hovereffect"></div>
                                             </a>
                                         </div><!-- end media -->
                                     </div><!-- end col -->
@@ -117,9 +123,12 @@
                                         <span class="bg-aqua"><a href="#" title="">Indoor</a></span>
                                         <h4><a href="{% url 'post' post.id %}" title="">{{post.title}}</a></h4>
                                         <p>{{post.overview |truncatechars:'200'}}</p>
-                                        <small><a href="{% url 'post' post.id %}" title=""><i class="fa fa-eye"></i> {{post.read}}</a></small>
-                                        <small><a href="{% url 'post' post.id %}" title="">{{post.time_upload}}</a></small>
-                                        <small><a href="{% url 'post' post.id %}" title="">by {{post.auther}}</a></small>
+                                        <small><a href="{% url 'post' post.id %}" title=""><i class="fa fa-eye"></i>
+                                                {{post.read}}</a></small>
+                                        <small><a href="{% url 'post' post.id %}"
+                                                title="">{{post.time_upload}}</a></small>
+                                        <small><a href="{% url 'post' post.id %}" title="">by
+                                                {{post.auther}}</a></small>
                                     </div><!-- end meta -->
                                 </div><!-- end blog-box -->
                                 {% endfor  %}
@@ -127,12 +136,12 @@
                             </div><!-- end blog-list -->
                         </div><!-- end page-wrapper -->
 
-                               
-                                
 
-                             
 
-                                
+
+
+
+
 
                         <hr class="invis">
 
@@ -141,23 +150,25 @@
                                 <nav aria-label="Page navigation example">
                                     <ul class="pagination">
                                         {% if posts.has_previous  %}
-                                      <li class="page-item">
-                                        <a class="page-link" href="?page={{posts.previous_page_number}}" aria-label="Previous">
-                                          <span aria-hidden="true">&laquo;</span>
-                                        </a>
-                                      </li>
-                                      {% endif  %}
-                                      <li class="page-item"><a class="page-link" href="#">{{posts.number}}</a></li>
-                                    
-                                      {% if posts.has_next  %}
-                                      <li class="page-item">
-                                        <a class="page-link" href="?page={{posts.next_page_number}}" aria-label="Next">
-                                          <span aria-hidden="true">&raquo;</span>
-                                        </a>
-                                      </li>
-                                      {% endif  %}
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page={{posts.previous_page_number}}"
+                                                aria-label="Previous">
+                                                <span aria-hidden="true">&laquo;</span>
+                                            </a>
+                                        </li>
+                                        {% endif  %}
+                                        <li class="page-item"><a class="page-link" href="#">{{posts.number}}</a></li>
+
+                                        {% if posts.has_next  %}
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page={{posts.next_page_number}}"
+                                                aria-label="Next">
+                                                <span aria-hidden="true">&raquo;</span>
+                                            </a>
+                                        </li>
+                                        {% endif  %}
                                     </ul>
-                                  </nav>
+                                </nav>
                             </div><!-- end col -->
                         </div><!-- end row -->
                     </div><!-- end col -->
@@ -178,12 +189,12 @@
                                 <div class="blog-list-widget">
                                     {% for recent in Recentpost  %}
                                     <div class="list-group">
-                                        <a href="" class="list-group-item list-group-item-action flex-column align-items-start">
+                                        <a href=""
+                                            class="list-group-item list-group-item-action flex-column align-items-start">
                                             <div class="w-100 justify-content-between">
                                                 <img src="{{recent.thumbnail.url}}" alt="" class="img-fluid float-left">
                                                 <h5 class="mb-1">{{recent.title}}</h5>
-                                                <small>{{recent.time_upload}}</small
-                                            </div>
+                                                <small>{{recent.time_upload}}</small </div>
                                         </a>
                                     </div>
                                     {% endfor  %}
@@ -203,7 +214,8 @@
                                 <h2 class="widget-title">Top Rated Author </h2>
                                 <div class="instagram-wrapper clearfix">
                                     {% for author in author_post   %}
-                                     <a href="#"><img src="{{author.thumbnail.url}}" width="45%" style="border-radius: 20%;" alt="" class="img-fluid"></a>  
+                                    <a href="#"><img src="{{author.thumbnail.url}}" width="45%"
+                                            style="border-radius: 20%;" alt="" class="img-fluid"></a>
                                     {% endfor   %}
                                 </div><!-- end Instagram wrapper -->
                             </div><!-- end widget -->
@@ -214,7 +226,7 @@
                                     {% for cat in cats   %}
                                     <ul>
                                         <li><a href="#">{{cat.title}} <span>({{forloop.counter}})</span></a></li>
-                                       
+
                                     </ul>
                                     {% endfor %}
                                 </div><!-- end link-widget -->
@@ -231,14 +243,21 @@
                     <div class="col-lg-8 offset-lg-2">
                         <div class="widget">
                             <div class="footer-text text-center">
-                                <a href="index.html"><img src="images/version/garden-footer-logo.png" alt="" class="img-fluid"></a>
-                                <p>Forest Time is a personal blog for handcrafted, cameramade photography content, fashion styles from independent creatives around the world.</p>
+                                <a href="index.html"><img src="images/version/garden-footer-logo.png" alt=""
+                                        class="img-fluid"></a>
+                                <p>Forest Time is a personal blog for handcrafted, cameramade photography content,
+                                    fashion styles from independent creatives around the world.</p>
                                 <div class="social">
-                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>              
-                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i class="fa fa-twitter"></i></a>
-                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Instagram"><i class="fa fa-instagram"></i></a>
-                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Google Plus"><i class="fa fa-google-plus"></i></a>
-                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Pinterest"><i class="fa fa-pinterest"></i></a>
+                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i
+                                            class="fa fa-facebook"></i></a>
+                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i
+                                            class="fa fa-twitter"></i></a>
+                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Instagram"><i
+                                            class="fa fa-instagram"></i></a>
+                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Google Plus"><i
+                                            class="fa fa-google-plus"></i></a>
+                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Pinterest"><i
+                                            class="fa fa-pinterest"></i></a>
                                 </div>
 
                                 <hr class="invis">
@@ -246,8 +265,10 @@
                                 <div class="newsletter-widget text-center">
                                     <form action="/" method="POST">
                                         {% csrf_token %}
-                                        <input type="text" id="email" name="email" class="form-control" placeholder="Enter your email address" required>
-                                        <button type="submit" class="btn btn-primary">Subscribe <i class="fa fa-envelope-open-o"></i></button>
+                                        <input type="text" id="email" name="email" class="form-control"
+                                            placeholder="Enter your email address" required>
+                                        <button type="submit" class="btn btn-primary">Subscribe <i
+                                                class="fa fa-envelope-open-o"></i></button>
                                     </form>
                                 </div><!-- end newsletter -->
                             </div><!-- end footer-text -->
@@ -258,18 +279,19 @@
                     <div class="col-md-12 text-center">
                         <br>
                         <br>
-                        <div class="copyright">&copy; Forest Time. Design: <a href="http://html.design">HTML Design</a>.</div>
+                        <div class="copyright">&copy; Forest Time. Design: <a href="http://html.design">HTML Design</a>.
+                        </div>
                     </div>
                 </div>
             </div><!-- end container -->
         </footer><!-- end footer -->
 
         <div class="dmtop" id="Forest Timemenu">Scroll to Top</div>
-        
+
     </div><!-- end wrapper -->
 
 
 
 
 
-{% endblock   %}
+    {% endblock   %}
