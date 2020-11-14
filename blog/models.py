@@ -24,10 +24,6 @@ class Category(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=200)
     overview = models.TextField()
-    #For Comment
-    slug = models.SlugField(null=True,blank=True)
-    body_text = RichTextUploadingField(null = True,blank=True)
-    #Endcomment
     
     highlight_line = models.CharField(max_length=1000 ,blank = True)
     Highlight_explanation= models.TextField(null=True)
@@ -46,10 +42,7 @@ class Post(models.Model):
     def __str__(self):
         return f'{self.title}'
     
-    def save(self,*args, **kwargs):
-        self.slug = slugify(self.title)
-        super(Post,self).save(*args,**kwargs)
-        
+   
         
         
 class Comment(models.Model):

@@ -53,16 +53,12 @@ def home(request):
     }
     return render(request,'blog/garden-index.html',context)
 
-
-def categories(request):
-    return render(request,'blog/garden-category.html')
-
 def post(request,post_ids):
     post_by_ids = get_object_or_404(Post,pk = post_ids) 
     Recentpost = Post.objects.all().order_by('-time_upload')
     TopAuthors = Author.objects.order_by('-rate')[:4]
     AuthorsPost = [Post.objects.filter(auther = author).first() for author in TopAuthors  ] 
-    categories = Category.objects.all()
+    categories = Category.objects.all().order_by('-title')
     #Using Read Count
     post_by_ids .read += 1
     post_by_ids.save()
@@ -93,3 +89,18 @@ def post(request,post_ids):
    
     return render(request,'blog/garden-single.html',context)
 
+
+def trends(request,trends_ids):
+    post_by_trends = get_object_or_404(Post,pk = trends_ids)
+    categories = Category.objects.all().order_by('-title')
+    
+    context= {
+        'posts':post_by_trends,
+        'Recentpost':Recentpost[:3],
+        'cats':categories,
+        'author_post':AuthorsPost,
+        'post':post,'comments':user_comment,'comments':comments,'comment_form':comment_form
+         
+    }
+    
+    return render(request,'blog/garden-trending.html',context)
