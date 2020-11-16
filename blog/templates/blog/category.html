@@ -1,0 +1,48 @@
+{% extends 'blog/base.html' %}
+{% load static  %}
+{% block body %}
+{% block css  %}
+
+{% endblock  %}
+
+
+{% for post in posts %}
+<hr class="invis">
+<div class="blog-box row">
+    <div class="col-md-4">
+        <div class="post-media">
+            <a href="garden-single.html" title="">
+                <img src="{{post.thumbnail.url}}" alt="" class="img-fluid">
+                <div class="hovereffect"></div>
+            </a>
+        </div><!-- end media -->
+    </div><!-- end col -->
+
+    <div class="blog-meta big-meta col-md-8">
+        <span class="bg-aqua"><a href="#" title="">Indoor</a></span>
+        <h4><a href="{% url 'post' post.id %}" title="">{{post.title}}</a></h4>
+        <p>{{post.overview |truncatechars:'200'}}</p>
+        <small><a href="{% url 'post' post.id %}" title=""><i class="fa fa-eye"></i>
+                {{post.read}}</a></small>
+        <small><a href="{% url 'post' post.id %}"
+                title="">{{post.time_upload}}</a></small>
+        <small><a href="{% url 'post' post.id %}" title="">by
+                {{post.auther}}</a></small>
+        <!--   Like -->
+
+        <form action="{% url 'like_post'  %}" method="POST" class="ui form">
+            {%  csrf_token    %}
+            <input type="hidden" name="post_id" value="{{post.id}}">
+            {% if user not in post.liked.all   %}
+            <button class="ui button positive" type="submit">Like</button>
+            {% else %}
+            <button class="ui button negative" type="submit">Unlike</button>
+            {% endif %}
+        </form>
+        <strong>{{post.liked.all.count}}</strong>
+    </div><!-- end meta -->
+</div><!-- end blog-box -->
+{% endfor  %}
+
+
+{% endblock   %}

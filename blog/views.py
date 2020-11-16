@@ -130,3 +130,61 @@ def like_post(request):
         
         
     return render(request,'blog/garden-index.html')
+
+
+def author(request,author_ids):
+    post_by_top_Author = get_object_or_404(Post,pk = author_ids)
+    categories = Category.objects.all().order_by('-title')
+    
+    context= {
+        'posts': post_by_top_Author,
+        'Recentpost':Recentpost[:3],
+        'cats':categories,
+        'author_post':AuthorsPost,
+        'post':post,'comments':user_comment,'comments':comments,'comment_form':comment_form
+         
+    }
+    
+   
+
+
+def recent(request,recent_ids):
+    post_by_recent = get_object_or_404(Post,pk = recent_ids)
+    categories = Category.objects.all().order_by('-title')
+    
+    context= {
+        'posts': post_by_recent,
+        'Recentpost':Recentpost[:3],
+        'cats':categories,
+        'author_post':AuthorsPost,
+        'post':post,'comments':user_comment,'comments':comments,'comment_form':comment_form
+         
+    }
+    
+    
+    
+    
+    
+
+
+
+def cat(request,cid):
+    #Category  save id in products(category)
+    category = Category.objects.get(pk = cid)
+    
+    #Product  save categoryid to products category
+    posts = Post.objects.filter(category = category)
+    
+    
+    context= {
+        'posts': posts,
+
+        'post':post,'comments':user_comment,'comments':comments,'comment_form':comment_form
+         
+    }
+    
+    return render(request,'blog/category.html',context)
+    
+    
+    
+ 
