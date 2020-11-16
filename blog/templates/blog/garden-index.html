@@ -91,6 +91,17 @@
                                                 title="">{{post.time_upload}}</a></small>
                                         <small><a href="{% url 'post' post.id %}" title="">by
                                                 {{post.auther}}</a></small>
+
+
+
+
+ 
+
+
+
+
+
+
                                     </div><!-- end meta -->
                                 </div><!-- end blog-box -->
                                 {% endfor  %}
@@ -99,7 +110,7 @@
                         </div><!-- end page-wrapper -->
 
                         <hr class="invis">
-
+<!-- For Pagination -->
                         <div class="row">
                             <div class="col-md-12">
                                 <nav aria-label="Page navigation example">
@@ -127,7 +138,7 @@
                             </div><!-- end col -->
                         </div><!-- end row -->
                     </div><!-- end col -->
-
+<!-- Recent Posts -->
                     <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
                         <div class="sidebar">
                             <div class="widget">
@@ -144,6 +155,8 @@
                                     </div>
                                     {% endfor  %}
                                 </div><!-- end blog-list -->
+
+<!-- Top Rated Author -->
                                 
                                                             <div class="widget mt-5 ml-4">
                                                                 <h2 class="widget-title">Top Rated Author </h2>

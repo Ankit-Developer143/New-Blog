@@ -11,6 +11,7 @@ from .models import *
 # Register your models here.
 admin.site.register((Post,Author,Category,subscribe))
 admin.site.register(Comment)
+admin.site.register(Like)
 
 class CommentAdmin(admin.ModelAdmin):
     list_display = ("post","name","publish","body","status")

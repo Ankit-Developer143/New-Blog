@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
+from django.db.models.base import ModelState
 from django.utils.text import slugify
 # Create your models here.
 class subscribe(models.Model):
@@ -24,12 +25,12 @@ class Category(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=200)
     overview = models.TextField()
-    
+    liked = models.ManyToManyField(User,default=None,blank=True,related_name='liked')
     highlight_line = models.CharField(max_length=1000 ,blank = True)
     Highlight_explanation= models.TextField(null=True)
     Highlighttopic_img = models.ImageField(upload_to = 'Highlighttopic_img',blank = True)
     time_upload = models.DateTimeField(auto_now_add=True)
-    auther = models.ForeignKey(Author,on_delete=models.CASCADE)
+    auther = models.ForeignKey(Author,on_delete=models.CASCADE,related_name='auther')
     thumbnail = models.ImageField(upload_to = 'thumbnails')
     publish  =  models.BooleanField()
     category = models.ManyToManyField(Category)
@@ -59,7 +60,22 @@ class Comment(models.Model):
     def __str__(self):
         return f"commented by {self.name}"
     
+@property
+def num_likes(self):
+    return self.liked.all().count()
 
+
+
+LIKE_CHOICES = (
+    ('Like','Like'),
+    ('Unlike','Unlike'),
+)
+
+
+class Like(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    value = models.CharField(choices=LIKE_CHOICES,default='Like',max_length=10)
     
     
     

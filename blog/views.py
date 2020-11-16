@@ -3,7 +3,7 @@ from datetime import date
 from ckeditor import fields
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
-from .models import Post,Author,Category,  subscribe,Comment
+from .models import Post,Author,Category,  subscribe,Comment,Like
 import datetime
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 from django.views.generic.edit import CreateView 
@@ -63,8 +63,8 @@ def post(request,post_ids):
     post_by_ids .read += 1
     post_by_ids.save()
     
-# For Comments.....................
-    comments = post_by_ids.comments.filter(status = True) 
+# For Comments.....................Related Name Comments in models
+    comments = post_by_ids.comments.filter(status = True)  #This is the main
     user_comment = None
     if request.method == "POST":
          comment_form = NewCommentForm(request.POST)
@@ -75,6 +75,7 @@ def post(request,post_ids):
              return redirect('/')
              
     else:
+        #this is used for html Pages
           comment_form = NewCommentForm()
     
    
@@ -104,3 +105,28 @@ def trends(request,trends_ids):
     }
     
     return render(request,'blog/garden-trending.html',context)
+
+
+
+def like_post(request):
+    user = request.user
+    if request.method == 'POST':
+        post_id = request.POST.get('post_id')
+        post_obj = Post.objects.get(id = post_id)
+        
+        if user in post_obj.liked.all():
+            post_obj.liked.remove(user)
+        else:
+            post_obj.liked.add(user)
+        like,created = Like.objects.get_or_create(user = user,post_id = post_id)
+        
+        if not created:
+            if like.value  == 'Like':
+                like.value = 'unlike'
+            else:
+                like.value = 'like'
+        like.save()
+        return redirect('/')
+        
+        
+    return render(request,'blog/garden-index.html')
