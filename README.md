@@ -1,3 +1,2 @@
 # New-Blog
-# 
-# [Live Demo link](https://ankit-blog.herokuapp.com/)
+Live demo [live](https://ankit-blog.herokuapp.com/)
